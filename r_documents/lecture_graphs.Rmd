@@ -1,0 +1,331 @@
+---
+title: "Lecture Graphs: Quantitative Data in Russian Studies"
+subtitle: "Master's Programme in Russian Studies: Theories & Methods"
+author: Eemil Mitikka
+date: "`r format(Sys.Date(), '%d %B, %Y')`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+# Approval ratings
+
+```{r}
+# Import libraries
+library(rvest)
+library(tidyverse)
+library(lubridate)
+library(writexl)
+library(scales)
+library(readxl)
+library(here)
+library(ggrepel)
+
+# Define and read URL
+levada_link <- "https://www.levada.ru/indikatory/odobrenie-organov-vlasti/"
+levada_page <- read_html(levada_link)
+# Import the table
+levada_table <- levada_page %>% 
+  html_nodes("table.datatable") %>% 
+  html_table() %>% 
+  .[[1]] %>% 
+  as.data.frame()
+# Name rows
+rownames(levada_table) <- c("date", "approve", "dont_approve", "no_answer")
+# Transpose the table
+levada_table <- as.data.frame(t(levada_table))
+
+# Make a new character string date variable
+levada_table$date2 <- as.character(levada_table$date)
+
+# Rename some weird looking date observations
+## for year 2000
+levada_table$date2[levada_table$date2 == "1.2"] <- "1.2000"
+levada_table$date2[levada_table$date2 == "2.2"] <- "2.2000"
+levada_table$date2[levada_table$date2 == "3.2"] <- "3.2000"
+levada_table$date2[levada_table$date2 == "4.2"] <- "4.2000"
+levada_table$date2[levada_table$date2 == "5.2"] <- "5.2000"
+levada_table$date2[levada_table$date2 == "6.2"] <- "6.2000"
+levada_table$date2[levada_table$date2 == "7.2"] <- "7.2000"
+levada_table$date2[levada_table$date2 == "8.2"] <- "8.2000"
+levada_table$date2[levada_table$date2 == "9.2"] <- "9.2000"
+levada_table$date2[levada_table$date2 == "10.2"] <- "10.2000"
+levada_table$date2[levada_table$date2 == "11.2"] <- "11.2000"
+levada_table$date2[levada_table$date2 == "12.2"] <- "12.2000"
+## For year 2010
+levada_table$date2[levada_table$date2 == "1.201"] <- "1.2010"
+levada_table$date2[levada_table$date2 == "2.201"] <- "2.2010"
+levada_table$date2[levada_table$date2 == "3.201"] <- "3.2010"
+levada_table$date2[levada_table$date2 == "4.201"] <- "4.2010"
+levada_table$date2[levada_table$date2 == "5.201"] <- "5.2010"
+levada_table$date2[levada_table$date2 == "6.201"] <- "6.2010"
+levada_table$date2[levada_table$date2 == "7.201"] <- "7.2010"
+levada_table$date2[levada_table$date2 == "8.201"] <- "8.2010"
+levada_table$date2[levada_table$date2 == "9.201"] <- "9.2010"
+levada_table$date2[levada_table$date2 == "10.201"] <- "10.2010"
+levada_table$date2[levada_table$date2 == "11.201"] <- "11.2010"
+levada_table$date2[levada_table$date2 == "12.201"] <- "12.2010"
+## For year 2020
+levada_table$date2[levada_table$date2 == "1.202"] <- "1.2020"
+levada_table$date2[levada_table$date2 == "2.202"] <- "2.2020"
+levada_table$date2[levada_table$date2 == "3.202"] <- "3.2020"
+levada_table$date2[levada_table$date2 == "4.202"] <- "4.2020"
+levada_table$date2[levada_table$date2 == "5.202"] <- "5.2020"
+levada_table$date2[levada_table$date2 == "6.202"] <- "6.2020"
+levada_table$date2[levada_table$date2 == "7.202"] <- "7.2020"
+levada_table$date2[levada_table$date2 == "8.202"] <- "8.2020"
+levada_table$date2[levada_table$date2 == "9.202"] <- "9.2020"
+levada_table$date2[levada_table$date2 == "10.202"] <- "10.2020"
+levada_table$date2[levada_table$date2 == "11.202"] <- "11.2020"
+levada_table$date2[levada_table$date2 == "12.202"] <- "12.2020"
+
+# Create a new POSIXct date variable denoting month and year
+levada_table_2 <- levada_table %>% 
+  mutate(date_parsed2= parse_date_time(levada_table$date2, "%m.%Y"))
+
+# Create a new table without unnecessary variables
+levada_table_3 <- levada_table_2 %>% 
+  mutate(approve_prop = approve*0.01, # convert to proportions i.e. percentages
+         dont_approve_prop = dont_approve*0.01, # convert to proportions i.e. percentages
+         no_answer_prop = no_answer*0.01) %>% # convert to proportions i.e. percentages
+  select(date_parsed2:no_answer_prop) %>% # select only needed variables
+  rename(date = date_parsed2) # rename final date variable
+
+# Add percentages column to the dataset
+levada_table_3 <- levada_table_3 %>% 
+  dplyr::mutate(approve_perc = scales::percent(approve_prop, accuracy = 1, trim = F),
+                dont_approve_perc = scales::percent(dont_approve_prop, accuracy = 1, trim = F),
+                no_answer_perc = scales::percent(no_answer_prop, accuracy = 1, trim = F))
+
+# install.packages("openxlslx")
+library(openxlsx)
+library(stringr)
+
+vciom_wrangled <- here("data/vciom_wrangled.xlsx") %>% 
+  read_excel()
+
+vciom_wrangled$vciom_prop <- vciom_wrangled$rating*0.01
+levada_table_3$levada_prop <- levada_table_3$approve_prop
+
+# Merge Levada and VCIOM datasets
+ratings_merged <- merge(vciom_wrangled, levada_table_3, by = "date", all = TRUE)
+
+# Visualize both Levada and VCIOM data (without interpretation)
+ggplot(ratings_merged, aes(x = date)) +
+  geom_line(data = ratings_merged[!is.na(ratings_merged$levada_prop),], aes(y = levada_prop, color = "Levada")) +
+  geom_line(data = ratings_merged[!is.na(ratings_merged$vciom_prop),], aes(y = vciom_prop, color = "VCIOM")) +
+  ggplot2::labs(x = "Year",
+       title = "Approve Vladimir Putin's actions as a president/prime minister of Russia ('Yes'-%)",
+       y = NULL) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
+  theme(panel.background = element_rect(fill = "gray96")) +
+  scale_color_manual(name = "Data source",
+                     values = c("Levada" = "#033365", "VCIOM" = "#fc0313")) + theme(axis.text = element_text(size = 18),
+    plot.title = element_text(size = 23)) + theme(plot.title = element_text(size = 15)) + theme(axis.title = element_text(size = 15))
+
+# Visualize both Levada and VCIOM data (with interpretation)
+ggplot(ratings_merged, aes(x = date)) +
+  geom_line(data = ratings_merged[!is.na(ratings_merged$levada_prop),], aes(y = levada_prop, color = "Levada")) +
+  geom_line(data = ratings_merged[!is.na(ratings_merged$vciom_prop),], aes(y = vciom_prop, color = "VCIOM")) +
+  ggplot2::labs(x = "Year",
+       title = "Approve Vladimir Putin's actions as a president/prime minister of Russia ('Yes'-%)",
+       y = NULL) + 
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
+  theme(panel.background = element_rect(fill = "gray96")) +
+  scale_color_manual(name = "Data source",
+                     values = c("Levada" = "#033365", "VCIOM" = "#fc0313")) +
+  geom_vline(xintercept = as.POSIXct(as.Date("2008-07-04")), linetype = 4) +
+  geom_vline(xintercept = as.POSIXct(as.Date("2011-12-12")), linetype = 4) +
+  geom_vline(xintercept = as.POSIXct(as.Date("2014-03-01")), linetype = 4) +
+  geom_vline(xintercept = as.POSIXct(as.Date("2018-07-14")), linetype = 4) +
+  annotate("text", x = as.POSIXct(as.Date("2009-4-27")), y = 0.4, label = "Oil\nprices\npeak", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2012-12-30")), y = 0.4, label = "2011\nelections", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2015-07-30")), y = 0.4, label = "Annexation\nof Crimea", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2019-07-30")), y = 0.4, label = "Pension\nreform", size = 5) + theme(axis.text = element_text(size = 18),
+    plot.title = element_text(size = 19)) + theme(axis.title = element_text(size = 15))
+
+```
+
+
+# Example visualizations
+
+
+```{r}
+# Import GDP data
+gdp <- paste(here("data/gdp-per-capita-worldbank.csv")) %>%
+  read.csv()
+
+# Import life expectancy data
+life_expectancy <- paste(here("data/life-expectancy.csv")) %>%
+  read.csv()
+
+# Import population data
+population <- paste(here("data/population-since-1800.csv")) %>%
+  read.csv()
+
+# Put all data frames into list
+df_list <- list(gdp, life_expectancy, population)
+
+# Merge all data frames in list
+full_data <- Reduce(function(x, y) merge(x, y, all=TRUE), df_list)
+
+# Filter for post-Soviet countries
+p_soviet <- full_data %>%
+  filter(Entity %in% c("Russia",
+                        "Belarus",
+                        "Ukraine",
+                        "Estonia",
+                        "Latvia",
+                        "Lithuania",
+                        "Armenia",
+                        "Azerbaijan",
+                        "Georgia",
+                        "Turkmenistan",
+                        "Uzbekistan",
+                        "Kazakhstan",
+                        "Kyrgyzstan",
+                        "Tajikistan",
+                        "Moldova"),
+         # Let's select only years 1990-2019
+         Year >= 1990 & Year <= 2019) %>%
+  # Rename some lengthy variable names for the new dataset
+  rename(gdp_per_capita = GDP.per.capita..PPP..constant.2017.international...,
+         life_exp = Life.expectancy,
+         pop = Population..historical.estimates.,
+         country = Entity,
+         cntr_code = Code,
+         year = Year)
+
+# Add country groups to post-Soviet states data
+p_soviet <- p_soviet %>%
+  mutate(
+    country_group = case_when(
+      # CIS-membership
+      country %in% c("Belarus",
+                     "Kazakhstan",
+                     "Kyrgyzstan",
+                     "Russia",
+                     "Tajikistan",
+                     "Uzbekistan") ~ "CIS-country",
+      # EU-membership
+      country %in% c("Estonia",
+                     "Latvia",
+                     "Lithuania") ~ "EU-member",
+      # EU-partnership
+      country %in% c("Georgia",
+                     "Ukraine") ~ "EU-partner",
+      # EU-partnership and CIS-member
+      country %in% c("Armenia",
+                     "Azerbaijan",
+                     "Moldova") ~ "CIS-country & EU-partner",
+      # Other categories
+      country == "Turkmenistan" ~ "Other"
+    )
+  )
+
+# Scatterplot: life expectancy, GDP per capita and population in post-Soviet countries
+p_soviet %>%
+  filter(year == 2019) %>%
+  ggplot(aes(y = life_exp, x = gdp_per_capita)) +
+  geom_point(aes(color = country_group, size = pop, alpha = 0.7)) +
+  geom_text_repel(aes(gdp_per_capita, life_exp, label = country)) +
+  scale_color_manual(name = "Country Group",
+                     values = c("#ff031c", # CIS and EU partnership
+                                "#ffa303", # CIS-countries
+                                "#0307ff", # EU-Countries
+                                "#1bab3a", # EU-partnership
+                                "#1ba9ab",
+                                "#ff031c"),
+                     labels = c("CIS-member",
+                                "CIS-member & EU partnership",
+                                "EU-member",
+                                "EU-partnership",
+                                "None")) +
+  scale_size(range = c(.1, 15),
+             name = "Population Size (in Millions)") +
+  # labs(color = "Country group") +
+  guides(alpha = "none") +
+  theme_bw() +
+  # labs(title = "Scatterplot: life expectancy, GDP per capita and population in post-Soviet countries (in 2019)", x = "GDP per capita", y = "Life expectancy") +
+  theme(axis.title = element_text(size = 21),
+  axis.text = element_text(size = 18),
+  plot.title = element_text(size = 19),
+  legend.text = element_text(size = 12),
+  legend.title = element_text(size = 16)) + theme(axis.text = element_text(size = 12)) +
+  labs(title = "Scatterplot: life expectancy, GDP and population in post-Soviet countries (in 2019)",
+       x = "GDP per capita", y = "Life expectancy (in years)") +
+ theme(plot.caption = element_text(size = 14,
+    hjust = 0)) +labs(caption = "Data source: Our World in Data")
+
+# Add mean life expectancy variable to the p_soviet dataset
+p_soviet <- p_soviet %>%
+  group_by(country_group, year) %>%
+  mutate(meanLifeExp = mean(life_exp))
+
+# Line plot: mean life expectancy by years and country groups in post-Soviet countries
+p_soviet %>%
+  ggplot(aes(y = meanLifeExp, x = year, color = country_group)) +
+  geom_line() +
+  theme(axis.title = element_text(size = 17),
+  axis.text = element_text(size = 18),
+  plot.title = element_text(size = 19),
+  legend.text = element_text(size = 14),
+  legend.title = element_text(size = 16)) +
+  labs(x = "Year", y = "Life expectancy in years (mean)",
+    colour = "Country group") + theme(plot.title = element_text(size = 23)) +labs(title = "Line plot: development of life expectancy in post-Soviet countries")
+
+# Import the fears data
+fears <- here("data/fears.xlsx") %>% 
+  read_excel()
+
+# Bar plot: mass fears among Russian population
+fears %>% 
+  ggplot(aes(x = reorder(Fear, +Percentage), y = Percentage)) +
+  geom_col(fill = "darkred") +
+  coord_flip() +
+  geom_text(aes(label = Percentage), hjust = +1.2, color = "white") + 
+  theme(axis.title = element_text(size = 19),
+  axis.text = element_text(size = 16),
+  plot.title = element_text(size = 19),
+  axis.text.x = element_blank()) + 
+  labs(x = "Fears") + 
+  theme(plot.caption = element_text(size = 13)) +
+  labs(caption = "Data source: Levada-Center (2022)") + 
+  theme(plot.caption = element_text(hjust = 0),
+  plot.title = element_text(size = 25)) +labs(title = "Bar plot: the hierarchy of mass fears of Russians") + 
+  theme(plot.title = element_text(size = 21))
+
+# Histogram: distribution of GDP per capita in post-Soviet countries (in 2019)
+p_soviet %>% 
+  filter(year == 2019) %>% 
+  ggplot(aes(x = gdp_per_capita)) +
+  geom_histogram() + 
+  theme(axis.ticks = element_line(colour = "gray60"),
+    axis.title = element_text(size = 17),
+    plot.title = element_text(size = 21)) +
+  labs(title = "Histogram: distribution of GDP per capita in post-Soviet countries (in 2019)",
+    x = "GDP per capita", y = "Number of countries") + 
+  theme(axis.text = element_text(size = 16)) + 
+  theme(plot.caption = element_text(size = 13,
+    hjust = 0)) +
+  labs(caption = "Data source: Our World in Data")
+
+# Boxplot: life expectancy by country groups in post-Soviet countries (in 2019)
+p_soviet %>% 
+  filter(year == 2019) %>% 
+  ggplot(aes(x = reorder(country_group, life_exp), y = life_exp)) +
+  geom_boxplot() + 
+  theme(plot.caption = element_text(size = 13,
+    hjust = 0), axis.title = element_text(size = 17),
+    axis.text = element_text(size = 14),
+    plot.title = element_text(size = 19)) +
+  labs(title = "Box plot: comparing life expectancies in post-Soviet county groups (in 2019)",
+    x = "Country groups", y = "Life expectancy",
+    caption = "Data source: Our World in Data")
+
+
+```
+
