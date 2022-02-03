@@ -45,7 +45,7 @@ background-position: 50% 10%
 .left[
 Faculty of Arts
 <br>
-`r format(Sys.Date(), '%d %B, %Y')`
+Last updated on: `r format(Sys.Date(), '%d %B, %Y')`
 ]
 
 
@@ -894,22 +894,63 @@ font-size: 1.5em;
 &#10004; There is no such thing as .blue[perfect data]! &#10145;&#65039; both quantitative and qualitative data have their pros and cons &#10145;&#65039; awareness helps to avoid worst pitfalls and jumping to conclusions
 ]
 
+
 ---
+
+# Further reading &#128218;
+
+
+
+
+
+
+
+
+---
+
 
 class: center
 
 # Thank you & good luck!
 
 .huge[
-&#128526;
+&#128202; + &#128200; = &#128526;
 ]
 
 <style>
 .huge {
-font-size: 10em;
+font-size: 7em;
 }
 </style>
 	
+---
+
+class: inverse
+
+.center[
+# Afterword: 
+### Some thoughts and resources for learning data analysis with:
+]
+
+<br>
+<br>
+
+.pull-left[
+<img src="https://www.r-project.org/logo/Rlogo.png" width="50%" />
+]
+
+.pull-right[
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/RStudio_logo_flat.svg" width="100%" />
+]
+
+<style>
+.inverse {
+  background-color: #34cdeb;
+  color: #d6d6d6;
+  text-shadow: 0 0 20px #333;
+}
+</style>
+
 ---
 
 background-image: url(https://www.r-project.org/logo/Rlogo.png)
@@ -926,12 +967,12 @@ background-position: 80% 5%
   - Create .blue[appealing] and .blue[informative visualizations] that you might .blue[apply] in your thesis/future work
   - Remember to .blue[play around]!
 
-- .blue[Don't worry too much] about stuff like
+- <u>In the early-stage of learning</u>, .blue[don't worry too much] about stuff like
     - conditionals (e.g. "if-else" -statements), 
     - loops ("for e in x" -sort of things) and
     - user-defined functions
 
-.blue[in the early-stage of learning] &#10145;&#65039; these can often be replaced with .blue[existing] and more .blue[intuitive] [Tidyverse](https://www.tidyverse.org/) functions + you can learn these kind of stuff in later stages!
+&#10145;&#65039; these can often be replaced with .blue[existing] and more .blue[intuitive] [Tidyverse](https://www.tidyverse.org/) functions + you can learn these kind of stuff in later stages, when you have more experience and confidence on using R!
   
 
 ---
@@ -940,7 +981,7 @@ background-image: url(https://raw.githubusercontent.com/oliviergimenez/intro_tid
 background-size: 30%, 30%
 background-position: 25% 50%, 70% 50%
 
-# First steps with R/or recommendations to my past self:
+# First steps with R or recommendations to my past self:
 
 <br>
 <br>
@@ -973,44 +1014,60 @@ background-position: 25% 50%, 70% 50%
 
 background-image: url(https://raw.githubusercontent.com/oliviergimenez/intro_tidyverse/master/assets/img/tidyverse.svg)
 background-size: 15%
-background-position: 95% 5%
+background-position: 98% 2%
 
-## Recommended resources: Tidyverse
+## Recommended resources for Tidyverse
 
-<br>
 
 .moderate[
 * David Robinson: [Introduction to the Tidyverse](https://app.datacamp.com/learn/courses/introduction-to-the-tidyverse) (my personal favorite Tidyverse intro course)
   - My personal views on learning R are very similar to Robinson's views
 
-* Alison Hill: [Working with Data in the Tidyverse](https://app.datacamp.com/learn/courses/working-with-data-in-the-tidyverse) (personally don't like the data used in this course, but the contents are &#128079;)
+* Alison Hill: [Working with Data in the Tidyverse](https://app.datacamp.com/learn/courses/working-with-data-in-the-tidyverse) (personally don't like the data used in this course, but the contents are &#128079;) &#10145;&#65039; check out also [Hill's YouTube](https://www.youtube.com/channel/UCQYM-t2ut2zXr4d7TIFya1A) channel
 
-* The above-mentioned are DataCamp courses (NB: I don't get any money from them &#129325;), and some DataCamp courses are behind the paywall &#128533; check also e.g. YouTube for free Tidyverse courses!
+* The above-mentioned are DataCamp courses (NB: I don't get any money from them &#129325;), and behind the paywall &#128533; see e.g. YouTube for free Tidyverse courses!
 ]
 
 ---
 
 background-image: url(../images/rmarkdown.png)
 background-size: 15%
-background-position: 95% 5%
+background-position: 98% 2%
 
-## Recommended resources: RMarkdown
-
-<br>
+## Recommended resources for RMarkdown
 
 .moderate[
-* Andy Field's YouTube channel, especially videos on [R and RStudio tutorials](https://www.youtube.com/c/ProfAndyField/playlists) playlist
+* Andy Field's YouTube channel
+  - especially videos on [R and RStudio tutorials](https://www.youtube.com/c/ProfAndyField/playlists) playlist
+  
+* Andy Field's `adventr` [package](http://milton-the-cat.rocks/home/adventr.html)
+  - no personal experience on `adventr`, but generally speaking I like Field's teaching materials and style
 
 ]
 
 
 ---
 
-background-image: url(https://www.r-project.org/logo/Rlogo.png)
-background-size: 15%
-background-position: 92% 5%
+background-image: url(https://www.r-project.org/logo/Rlogo.png), url(https://upload.wikimedia.org/wikipedia/fi/thumb/2/21/Helsingin_yliopisto.svg/180px-Helsingin_yliopisto.svg.png)
+background-size: 10%, 10%
+background-position: 80% 5%, 95% 5%
 
-# Recommended resources for learning 
+# University of Helsinki resources
+
+* Kimmo Vehkalahti: [Introduction to Open Data Science](https://courses.helsinki.fi/fi/hymy-909/125158217)
+  - no personal experience on this course, but I've liked more advanced courses of Vehkalahti
+  
+* Maria Valaste: [Data Wrangling and Analysis](https://studies.helsinki.fi/courses/cur/hy-opt-cur-2122-498ef31e-2db1-4d61-8af3-b4fcbcb6e46f/Data_Wrangling_and_Analysis_Lectures)
+  - no personal experience on this course, but I've liked other courses by Valaste
+  
+* Maria Valaste: [Survey Methodology](https://studies.helsinki.fi/courses/cur/hy-opt-cur-2122-6ad61c06-dcf6-4ce0-bc0e-1e4f8ae8d16c/Survey_Methodology_Lectures)
+  - You can take this course as a complete beginner, but it probably requires some extra work in this case
+  
+* For more courses, see .blue[Centre for Social Data Science] "[Studies and teaching](https://www.helsinki.fi/en/networks/centre-social-data-science/studies-and-teaching)"
+
+* Petteri Piiroinen: [Tilastotiede ja R tutuksi](https://courses.helsinki.fi/en/aymat12001/139388144)  ("*Introduction to Statistics and R*")
+  - no personal experience on this course, but it's more mathematically oriented (course is for statistics students)
+  - NB: The course .blue[can be taken in English]! Don't let the name fool you 
 
 
 
