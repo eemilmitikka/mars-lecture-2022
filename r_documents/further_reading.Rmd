@@ -1,4 +1,21 @@
 ---
-output: html_document
+output: word_document
+bibliography: references.bib
+csl: american-political-science-association.csl
 ---
 
+[@medvedev2019]
+
+[@mitikka2020]
+
+[@napreenko2017]
+
+[@frye2017]
+
+[@rosling2020]
+
+[@herrera2006]
+
+[@begtin2011]
+
+[@ahmed2015]

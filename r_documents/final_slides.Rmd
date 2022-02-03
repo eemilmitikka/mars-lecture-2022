@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="" xml:lang="">
-  <head>
-    <title>final.knit</title>
-    <meta charset="utf-8" />
-    <script src="final_files/header-attrs-2.11/header-attrs.js"></script>
-    <link href="final_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="final_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="link-style-alt.css" type="text/css" />
-  </head>
-  <body>
-    <textarea id="source">
-
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: [default, default-fonts, link-style-alt.css]
+---
 
 class: center
 
@@ -19,7 +12,7 @@ background-size: 95%
 background-position: 50% 10%
 
 .left[
-&lt;img src="https://mooc.helsinki.fi/pluginfile.php/1/theme_snap/logo/1476877363/MOOC_hy-logo.png" width=150px&gt;
+<img src="https://mooc.helsinki.fi/pluginfile.php/1/theme_snap/logo/1476877363/MOOC_hy-logo.png" width=150px>
 ]
 
 .box[
@@ -28,22 +21,22 @@ background-position: 50% 10%
 
 
 .box[
-## Data Sources &amp; Basic Applications
+## Data Sources & Basic Applications
 ]
 
 .box[
-### Eemil Mitikka | Theories &amp; Methods | MARS Programme
+### Eemil Mitikka | Theories & Methods | MARS Programme
 ]
 
 
-&lt;br&gt;
+<br>
 
 .left[
 .uhtetx[
 **HELSINGIN YLIOPISTO**
-&lt;br&gt;
+<br>
 **HELSINGFORS UNIVERSITET**
-&lt;br&gt;
+<br>
 **UNIVERSITY OF HELSINKI**
 ]
 ]
@@ -51,28 +44,30 @@ background-position: 50% 10%
 
 .left[
 Faculty of Arts
-&lt;br&gt;
-Last updated on: 03 February, 2022
+<br>
+Last updated on: `r format(Sys.Date(), '%d %B, %Y')`
 ]
 
 
-&lt;style&gt;
+<style>
 .box {
     background-color: rgba(0,0,0,.5);
     color: #fff;
 }
-&lt;/style&gt;
+</style>
 
-&lt;style&gt;
+<style>
 .box2 {
     background-color: #F5F5F5;
     color: #000000;
 }
-&lt;/style&gt;
+</style>
 
 ---
 
-
+```{r echo=FALSE}
+library(fontawesome)
+```
 
 background-image: url(../images/avatar.jpeg)
 background-size: 25%
@@ -80,14 +75,14 @@ background-position: 90% 50%
 
 # Contact me/find me at
 
-&lt;br&gt;
+<br>
 
-<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg> [https://eemilmitikka.netlify.app/](https://eemilmitikka.netlify.app/)
-<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg> [eemil.mitikka@helsinki.fi](mailto:eemil.mitikka@helsinki.fi)
-<svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg> [Eemil Mitikka](https://www.youtube.com/channel/UC6f_SpVTiB7rZS0Knwb6aYg)
-<svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg> [eemil-mitikka](https://www.linkedin.com/in/eemil-mitikka/)
-<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> [@eemilmitikka](https://twitter.com/eemilmitikka)
-<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [@eemilmitikka](https://github.com/eemilmitikka)
+`r fa("link")` [https://eemilmitikka.netlify.app/](https://eemilmitikka.netlify.app/)
+`r fa("envelope")` [eemil.mitikka@helsinki.fi](mailto:eemil.mitikka@helsinki.fi)
+`r fa("youtube")` [Eemil Mitikka](https://www.youtube.com/channel/UC6f_SpVTiB7rZS0Knwb6aYg)
+`r fa("linkedin")` [eemil-mitikka](https://www.linkedin.com/in/eemil-mitikka/)
+`r fa("twitter")` [@eemilmitikka](https://twitter.com/eemilmitikka)
+`r fa("github")` [@eemilmitikka](https://github.com/eemilmitikka)
 
 
 ???
@@ -100,7 +95,7 @@ Let me say first a couple of words about myself:
   
   - I study political participation and how it relates to authoritarianism in Russia and post-Soviet countries
   
-  - I have background in social sciences and Russian &amp; Eastern European studies
+  - I have background in social sciences and Russian & Eastern European studies
   
   - I also use statistical methods and R in my daily work
 
@@ -108,20 +103,20 @@ Here you can my contact info. Please feel free to contact me through any of thes
 
 ---
 
-# Warm-up &amp;#128173;
+# Warm-up &#128173;
 
-&lt;br&gt;
+<br>
 
 .center[
 .large[
-## *TASK: Test your numerical knowledge on &amp;#127479;&amp;#127482; by answering the quiz in Zoom*
+## *TASK: Test your numerical knowledge on &#127479;&#127482; by answering the quiz in Zoom*
 ]
 
-.large[## Rules: NO Googling! &amp;#9757;&amp;#65039;]
+.large[## Rules: NO Googling! &#9757;&#65039;]
 
-&lt;br&gt;
+<br>
 
-## max 2 minutes! &amp;#9200;
+## max 2 minutes! &#9200;
 ]
 
 
@@ -137,19 +132,19 @@ There's a little poll in Zoom, please go ahead and answer the questions! :)
 # Answers
 
 #### [Population](https://en.wikipedia.org/wiki/Russia) of Russia (without Crimea) in 2021 was about 
-&amp;#10060; 120 million &lt;br&gt;
-&amp;#9989; 144 million &lt;br&gt;
-&amp;#10060; 290 million (population of USSR [in 1990s](https://en.wikipedia.org/wiki/Demographics_of_the_Soviet_Union#/media/File:Population_of_former_USSR.PNG))
+&#10060; 120 million <br>
+&#9989; 144 million <br>
+&#10060; 290 million (population of USSR [in 1990s](https://en.wikipedia.org/wiki/Demographics_of_the_Soviet_Union#/media/File:Population_of_former_USSR.PNG))
 
 #### Average [life expectancy]() in Russia in 2021 is about
-&amp;#10060; 55 years (in 1949) &lt;br&gt;
-&amp;#10060; 64 years (in 1994) &lt;br&gt;
-&amp;#9989; 73 years
+&#10060; 55 years (in 1949) <br>
+&#10060; 64 years (in 1994) <br>
+&#9989; 73 years
 
 #### In the last 20 years, infant mortality rate in Russia has
-&amp;#9989; More than halved &lt;br&gt;
-&amp;#10060; Halved (in ~2013) &lt;br&gt;
-&amp;#10060; Doubled
+&#9989; More than halved <br>
+&#10060; Halved (in ~2013) <br>
+&#10060; Doubled
 
 ???
 
@@ -159,21 +154,21 @@ Some of the answer alternatives very pulled out of hat, but those within bracket
 
 ---
 
-#### In 2020, Russia's [GDP per capita](https://datacommons.org/tools/timeline#&amp;place=country/RUS&amp;statsVar=Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita) was
-&amp;#10060; 3 times bigger than in 2000 (in ~2005) &lt;br&gt;
-&amp;#9989; 6 times bigger than in 2000 &lt;br&gt;
-&amp;#10060; 9 times bigger than in 2000  (in 2013) &lt;br&gt;
+#### In 2020, Russia's [GDP per capita](https://datacommons.org/tools/timeline#&place=country/RUS&statsVar=Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita) was
+&#10060; 3 times bigger than in 2000 (in ~2005) <br>
+&#9989; 6 times bigger than in 2000 <br>
+&#10060; 9 times bigger than in 2000  (in 2013) <br>
 
 #### In 2020, Russia's [military spending](https://en.wikipedia.org/wiki/List_of_countries_by_military_expenditures) was around 62 billion US$. This is
-&amp;#9989;  8% of the U.S. military spending &lt;br&gt;
-&amp;#10060; 20% of the U.S. military spending &lt;br&gt;
-&amp;#10060; 30% of the U.S. military spending
+&#9989;  8% of the U.S. military spending <br>
+&#10060; 20% of the U.S. military spending <br>
+&#10060; 30% of the U.S. military spending
 
 #### Share of population [using the Internet](https://ourworldindata.org/internet) in Russia in 2019 was about
 
-&amp;#10060;  53% of Russians &lt;br&gt;
-&amp;#10060; 73% of Russians &lt;br&gt;
-&amp;#9989; 83 % of Russians
+&#10060;  53% of Russians <br>
+&#10060; 73% of Russians <br>
+&#9989; 83 % of Russians
 
 
 ???
@@ -182,28 +177,28 @@ And here are some more answers.
 
 ---
 
-#### In 2020, the share of [services](https://data.worldbank.org/indicator/NV.SRV.TOTL.ZS?end=2020&amp;locations=RU&amp;start=1989&amp;view=chart) of Russia's gross domestic product (GDP) was about
+#### In 2020, the share of [services](https://data.worldbank.org/indicator/NV.SRV.TOTL.ZS?end=2020&locations=RU&start=1989&view=chart) of Russia's gross domestic product (GDP) was about
 
-&amp;#10060; 37% of GDP (in 1991) &lt;br&gt;
-&amp;#10060; 45% of GDP (in 1995) &lt;br&gt;
-&amp;#9989; 56% of GDP
+&#10060; 37% of GDP (in 1991) <br>
+&#10060; 45% of GDP (in 1995) <br>
+&#9989; 56% of GDP
 
 #### In 2019, the share [oil rents](https://data.worldbank.org/indicator/NY.GDP.PETR.RT.ZS?locations=RU) of Russia's GDP was about
 
-&amp;#9989; 9% of GDP &lt;br&gt;
-&amp;#10060; 15% of GDP (in 2000) &lt;br&gt;
-&amp;#10060; 35% of GDP
+&#9989; 9% of GDP <br>
+&#10060; 15% of GDP (in 2000) <br>
+&#10060; 35% of GDP
 
 #### In 2019, there were 25 [suicides](https://data.worldbank.org/indicator/SH.STA.SUIC.P5?locations=RU) per 100,000 people in Russia. This is
 
-&amp;#10060;  Approximately the same figure as in year 2000 &lt;br&gt;
-&amp;#10060; About one third less compared to year 2000 (in 2011) &lt;br&gt;
-&amp;#9989; More than twice less compared to year 2000
+&#10060;  Approximately the same figure as in year 2000 <br>
+&#10060; About one third less compared to year 2000 (in 2011) <br>
+&#9989; More than twice less compared to year 2000
 
 
 ---
 
-background-image: url(https://pi.tedcdn.com/r/pe.tedcdn.com/images/ted/88407_800x600.jpg?cb=20160511&amp;quality=63&amp;u=&amp;w=512)
+background-image: url(https://pi.tedcdn.com/r/pe.tedcdn.com/images/ted/88407_800x600.jpg?cb=20160511&quality=63&u=&w=512)
 background-size: 50%
 background-position: 95% 50%
 
@@ -229,27 +224,27 @@ I think this quote summarizes quite nicely the meaning and importance of numeric
 
 # Outline
 .large[
-1. Survey data &amp;#128550; &amp;#128577; &amp;#128528; &amp;#128578; &amp;#128522;
+1. Survey data &#128550; &#128577; &#128528; &#128578; &#128522;
 
-2. State statistics 		&amp;#127479;&amp;#127482;	&amp;#128202;
+2. State statistics 		&#127479;&#127482;	&#128202;
 
-3. International statistics &amp;#127757; &amp;#128200;
+3. International statistics &#127757; &#128200;
 
-4. Apply quantitative data	&amp;#x1F913;
+4. Apply quantitative data	&#x1F913;
 ]
 
-&lt;style&gt;
+<style>
 .large {
 font-size: 1.5em;
 }
-&lt;/style&gt;
+</style>
 
-&lt;style&gt;
+<style>
 .blue {
 color: blue;
 font-style: italic;
 }
-&lt;/style&gt;
+</style>
 
 ???
 
@@ -272,12 +267,12 @@ Finally, I'll give some examples and ideas how to apply quantitative data to you
 
 ---
 
-# My goals 	&amp;#127919;
+# My goals 	&#127919;
 .large[**After this lecture you will**
 .pull-left[
-* .blue[Know] relevant data sources &amp;#128202;
-* Give you some ideas how to .blue[examine] (Russian) quantitative data 	&amp;#129488;
-* Be more .blue[confident] in using quantitative (Russian) data 	&amp;#128526;
+* .blue[Know] relevant data sources &#128202;
+* Give you some ideas how to .blue[examine] (Russian) quantitative data 	&#129488;
+* Be more .blue[confident] in using quantitative (Russian) data 	&#128526;
 ]
 ]
 --
@@ -291,7 +286,7 @@ background-image: url(https://cdn.britannica.com/25/69525-050-62EED6EC/George-Ga
 background-size: 35%
 background-position: 90% 60%
 
-# 1. Survey data &amp;#128550; &amp;#128577; &amp;#128528; &amp;#128578; &amp;#128522;
+# 1. Survey data &#128550; &#128577; &#128528; &#128578; &#128522;
 .pull-left[
 .large[
 * Historically, surveys/opinion polls were developed in .blue[democratic] context
@@ -301,11 +296,11 @@ background-position: 90% 60%
 ]
 
 
-&lt;style&gt;
+<style>
 .moderate {
 font-size: 1.4em;
 }
-&lt;/style&gt;
+</style>
 
 ???
 
@@ -318,9 +313,9 @@ So can we relate to Russian surveys in same way as we relate to surveys conducte
 
 ---
 
-# Survey data &amp;#128550; &amp;#128577; &amp;#128528; &amp;#128578; &amp;#128522;
+# Survey data &#128550; &#128577; &#128528; &#128578; &#128522;
 .large[
-* Reliability concerns in authoritarian countries:
+* Reliability concerns in authoritarian countries (Frye et al. 2017):
   
   1. .blue[Fake numbers]: political legitimacy questions
   
@@ -342,7 +337,7 @@ Most typically, the critique of Russian surveys comes in three forms:
 
 ---
 
-# Critique of &amp;#127479;&amp;#127482; surveys
+# Critique of &#127479;&#127482; surveys
 
 .pull-left[
 .moderate["An .blue[opinion poll can only be conducted in a democracy with a free press]. In a country with no free press [...] when a pollster phones people up and asks, 'Hello, do you approve of Vladimir Putin,' the answer is overwhelmingly yes. So what that opinion poll is, is not a poll of approval but it's .blue[a poll of fear]".
@@ -359,9 +354,9 @@ I've worked quite a lot with Russian surveys, and I think this quote from Ben Ju
 
 ---
 
-# Surveys in &amp;#127479;&amp;#127482;
+# Surveys in &#127479;&#127482;
 
-### Rough division between local &amp; cross-national surveys:
+### Rough division between local & cross-national surveys:
 
 .pull-left[
 #### Local surveys
@@ -403,7 +398,7 @@ background-image: url(https://upload.wikimedia.org/wikipedia/en/e/ed/Levada_LOGO
 background-position: 10% 50%, 90% 50%, 50% 50%
 background-size: 25%, 25%, 25%
 
-# Major local survey companies in modern &amp;#127479;&amp;#127482;
+# Major local survey companies in modern &#127479;&#127482;
 
 ---
 
@@ -420,7 +415,7 @@ background-size: 15%
 * Arguably the most trusted polling company among foreign Russia scholars and experts
 
 
-* Labeled as "foreign agent" in 2016 &amp;#10145;&amp;#65039; the center was [forbidden](https://www.rbc.ru/politics/14/09/2017/59ba9d429a7947911f797399) to conduct exit polls in 2018 presidential elections
+* Labeled as "foreign agent" in 2016 &#10145;&#65039; the center was [forbidden](https://www.rbc.ru/politics/14/09/2017/59ba9d429a7947911f797399) to conduct exit polls in 2018 presidential elections
 
 * Operates actively and conducts reguraly polls social and political opinions
 ]
@@ -438,7 +433,7 @@ background-size: 15%
 
 * Fullname: Russian Public Opinion Center (Всероссийский центр изучения общественного мнения – ВЦИОМ)
 
-* Become fully state-owned in 2003 &amp;#10145;&amp;#65039; Yuri Levada many former employees left the company and established the Levada-Center in 2004
+* Become fully state-owned in 2003 &#10145;&#65039; Yuri Levada many former employees left the company and established the Levada-Center in 2004
 
 * Current head of the center: [Valery Fedorov](https://wciom.com/about/staff/fedorov-valery/)
 
@@ -447,13 +442,13 @@ background-size: 15%
 
 ---
 
-# Cross-national surveys in 	&amp;#127479;&amp;#127482;
+# Cross-national surveys in 	&#127479;&#127482;
 .moderate[
 * Many high-quality and well-documented surveys since the early 1990s
 
-* **Rule of thumb** &amp;#128077;
-  - Overall trends 	&amp;#10145;&amp;#65039; use local survey data (e.g. Levada-Center, VCIOM, FOM, etc.)
-  - Individual level &amp;#10145;&amp;#65039; use cross-national survey data
+* **Rule of thumb** &#128077;
+  - Overall trends 	&#10145;&#65039; use local survey data (e.g. Levada-Center, VCIOM, FOM, etc.)
+  - Individual level &#10145;&#65039; use cross-national survey data
   - NB: there are .blue[exceptions]! e.g. [Russian Longitudinal Monitoring Survey](https://rlms-hse.cpc.unc.edu/)
   - Non-Russian research institutions also sometimes offer individual level survey data, e.g. NUPI's [NEORUSS](https://www.hf.uio.no/ilos/english/research/projects/neoruss/) surveys
 ]
@@ -474,7 +469,7 @@ background-position: 95% 5%
 
 * Many data formats, [country-specific](https://www.worldvaluessurvey.org/WVSContents.jsp) files available for Excel (.xlsx), SPSS (.sav) and Stata (.dta)
 
-* Documentation of the first rounds is not ideal &amp;#10145;&amp;#65039; has improved with time
+* Documentation of the first rounds is not ideal &#10145;&#65039; has improved with time
 ]
 
 ---
@@ -492,7 +487,7 @@ background-position: 95% 5%
 * Conducted since 2002
 
 * Russia has participated .blue[since 2006]
-  - NB: datasets for .blue[2014] and .blue[2018] are located in [CESSI data archive](http://www.ess-ru.ru/), *not* on ESS's official page &amp;#10145;&amp;#65039; registration needed to download the data
+  - NB: datasets for .blue[2014] and .blue[2018] are located in [CESSI data archive](http://www.ess-ru.ru/), *not* on ESS's official page &#10145;&#65039; registration needed to download the data
   
 * Arguably the most well-documented and high-quality survey (my personal opinion)
 
@@ -500,7 +495,7 @@ background-position: 95% 5%
 ]
 ---
 
-## Some survey data sources on &amp;#127479;&amp;#127482;
+## Some survey data sources on &#127479;&#127482;
 
 .pull-left[
 #### General trends data
@@ -538,7 +533,7 @@ background-image: url(https://upload.wikimedia.org/wikipedia/en/e/ed/Levada_LOGO
 background-position: 10% 50%, 90% 50%
 background-size: 25%, 25%
 
-## Do the numbers differ? &amp;#129300;
+## Do the numbers differ? &#129300;
 ### Let's have a look!
 
 
@@ -549,24 +544,24 @@ background-size: contain
 
 ---
 
-# Your turn &amp;#128221;
+# Your turn &#128221;
 
 
 .pull-left[.assignment[What might cause the .blue[fluctuations] in president's approval ratings in Russia?
 
-Brainstorm &amp;#128173; in groups for 5 minutes &amp;#9200;
+Brainstorm &#128173; in groups for 5 minutes &#9200;
 ] 
 ]
 
 .pull-right[
-.big[&amp;#129488;]
+.big[&#129488;]
 ]
 
-&lt;style&gt;
+<style>
 .assignment {
 font-size: 1.5em;
 }
-&lt;/style&gt;
+</style>
 ---
 
 background-image: url(../images/approval_ratings_interpret.png)
@@ -576,7 +571,7 @@ background-size: contain
 
 # Some guidelines to interpret survey data
 
-.emphasize[&amp;#10004; Pay attention to the .blue[documentation]  &amp;#128221; how the numbers are .blue[produced]?
+.emphasize[&#10004; Pay attention to the .blue[documentation]  &#128221; how the numbers are .blue[produced]?
  - Who were included: what was the .blue[sampling] method? How this was defined?
  
  - What is the .blue[sample size]? How generalizible are the results?
@@ -591,7 +586,7 @@ background-size: contain
 
 background-image: url(https://www.schelcovo.ru/image/logo/mosoblstat.png)
 
-# 2. State statistics 		&amp;#127479;&amp;#127482;	&amp;#128202;
+# 2. State statistics 		&#127479;&#127482;	&#128202;
 
 ---
 
@@ -614,7 +609,7 @@ background-position: 98% 5%, 30% 80%
 
 * Considered reliable, some critique on lack of openness and accessibility of the data (e.g. [Begtin](https://m.polit.ru/article/2011/10/18/mocsow_begtin/))
 
-* Bank of Finland Institute for Emerging Economies ([BOFIT](https://www.bofit.fi/en/)) collates economic data monthly from Rosstat, Central Bank of Russia, Ministry of Finance, OECD and CEIC &amp;#10145;&amp;#65039; downloadable in CSV format
+* Bank of Finland Institute for Emerging Economies ([BOFIT](https://www.bofit.fi/en/)) collates economic data monthly from Rosstat, Central Bank of Russia, Ministry of Finance, OECD and CEIC &#10145;&#65039; downloadable in CSV format
 ]
 
 ---
@@ -623,11 +618,11 @@ background-image: url(https://fontslogo.com/wp-content/uploads/2019/04/World-Ban
 background-size: 30%, 30%, 30%, 30%, 30%, 30%
 background-position: 5% 30%, 25% 80%, 50% 50%, 80% 80%, 95% 30%, 95% 60%
 
-# 3. International statistics &amp;#127757; &amp;#128200;
+# 3. International statistics &#127757; &#128200;
 
 ---
 
-# International statistics &amp;#127757; &amp;#128200;
+# International statistics &#127757; &#128200;
 
 .pull-left[
 #### .blue[Crude indicators], examples:
@@ -652,9 +647,9 @@ background-position: 5% 30%, 25% 80%, 50% 50%, 80% 80%, 95% 30%, 95% 60%
 ]
 
 .moderate[
-.blue[Crude indicators] &amp;#10145;&amp;#65039; measure single variable
+.blue[Crude indicators] &#10145;&#65039; measure single variable
 
-.blue[Aggregate indicators] &amp;#10145;&amp;#65039; compile multiple variables into common index
+.blue[Aggregate indicators] &#10145;&#65039; compile multiple variables into common index
 ]
 ---
 
@@ -669,10 +664,10 @@ Our World in Data is perhaps my favorite data source for international statistic
 
 ---
 
-# 4. Apply quantitative data	&amp;#x1F913;
+# 4. Apply quantitative data	&#x1F913;
 
 .large[
-* Today, there is an abundance of statistical tools and packages &amp;#10145;&amp;#65039; can't cover all here
+* Today, there is an abundance of statistical tools and packages &#10145;&#65039; can't cover all here
 
 * I'll present some basic principles and ideas for data visualizations
 
@@ -684,7 +679,7 @@ Our World in Data is perhaps my favorite data source for international statistic
 
 ---
 
-## Data visualizations &amp;#127912; &amp;#128202; &amp;#128200;
+## Data visualizations &#127912; &#128202; &#128200;
 
 .large[
 * Data visualizations are a powerful way to communicate with your data: .blue[a picture is worth a thousand words]
@@ -692,13 +687,13 @@ Our World in Data is perhaps my favorite data source for international statistic
 * Demanded and needed skill in modern research work and beyond
 
 * If possible, .blue[always prefer visualizations over data tables]: visualizations are much more powerful and interesting way of communicating + demonstrate your methodological skills nicely!
-  - NB &amp;#9757;&amp;#65039; this principle applies also to more advanced statistical analyses, like regression model results etc.
+  - NB &#9757;&#65039; this principle applies also to more advanced statistical analyses, like regression model results etc.
 
 ]
 
 ---
 
-## Types of visualizations &amp;#127912; (not all-inclusive list)
+## Types of visualizations &#127912; (not all-inclusive list)
 
 ####	Scatterplots
   -	Great for visualizing the relationship between two continuous (= non-categorical) variables
@@ -706,7 +701,7 @@ Our World in Data is perhaps my favorite data source for international statistic
     1.	Life expectancy in years on Y-axis (the vertical axis)
     2.	Gross domestic product (GDP) per capita on X-axis (the horizontal axis)
 
-#### Line plots &amp;#128200;
+#### Line plots &#128200;
   - Great for visualizing change over time
   -	Example visualization:
     1.	Life expectancy in years on Y-axis (the vertical axis)
@@ -714,7 +709,7 @@ Our World in Data is perhaps my favorite data source for international statistic
     
 ---
 
-#### Bar plots &amp;#128202;
+#### Bar plots &#128202;
   -	Great at comparing statistics for each of several categories
   -	Example visualization:
     1.	Fears (= categories) on the Y-axis (the vertical axis)
@@ -726,7 +721,7 @@ Our World in Data is perhaps my favorite data source for international statistic
     1.	Life expectancy on the X-axis (the horizontal axis)
     2.	NB! With histograms the Y-axis is always only the number of observations on the X-axis!
 
-#### Box plots &amp;#128230;
+#### Box plots &#128230;
   -	Great at comparing the distribution of a numeric variable among several categories
   -	Example:
     1. Life expectancy on the Y-axis (the vertical axis)
@@ -764,26 +759,26 @@ background-size: contain
 ---
 
 
-## Some basic principles for visualizing data &amp;#128161; &amp;#9757;&amp;#65039;
+## Some basic principles for visualizing data &#128161; &#9757;&#65039;
 
 .large[
-- Keep it simple! &amp;#10145;&amp;#65039; for example, avoid 3D visualizations if it doesn’t add any information to the chart
+- Keep it simple! &#10145;&#65039; for example, avoid 3D visualizations if it doesn’t add any information to the chart
   -	We human beings have difficulties to understand more than 3 dimensions, even if there are more of them
 
--	Avoid [chartjunk](https://en.wikipedia.org/wiki/Chartjunk#:~:text=Chartjunk%20refers%20to%20all%20visual,the%20viewer%20from%20this%20information.) &amp;#10145;&amp;#65039; in short, remove any unnecessary stuff from your visualizations
+-	Avoid [chartjunk](https://en.wikipedia.org/wiki/Chartjunk#:~:text=Chartjunk%20refers%20to%20all%20visual,the%20viewer%20from%20this%20information.) &#10145;&#65039; in short, remove any unnecessary stuff from your visualizations
 ]
 
 ---
 
-## Some basic principles for visualizing data &amp;#128161; &amp;#9757;&amp;#65039; (cont.)
+## Some basic principles for visualizing data &#128161; &#9757;&#65039; (cont.)
 
 .large[
 -	Keep your numbers simple: 
   -	rule of thumb: decimals aren’t needed when you represent percentages
   
-  -	even statistically speaking, max two decimals are (rarely) needed &amp;#10145;&amp;#65039;  adding/cutting decimals don’t affect dramatically to analysis’ results
+  -	even statistically speaking, max two decimals are (rarely) needed &#10145;&#65039;  adding/cutting decimals don’t affect dramatically to analysis’ results
   
-- Use distinguishable colors &amp;#10145;&amp;#65039; pay also attention to accessibility issues, like color blindness
+- Use distinguishable colors &#10145;&#65039; pay also attention to accessibility issues, like color blindness
 ]
 
 
@@ -815,11 +810,11 @@ background-position: 95% 5%
 
 ## Softwares: Excel
 
-#### Plusses &amp;#10133;
+#### Plusses &#10133;
   -	Widely used, pretty much “industry standard”
   -	You may start to use it quickly: “What You See Is What You Get” kind of interface is more intuitive for many users
 
-#### Minuses &amp;#10134;
+#### Minuses &#10134;
 
 -	Exclusiveness: a paid software, .blue[features may vary between Excel versions]
 -	Gets .blue[slow] easily with large datasets
@@ -840,7 +835,7 @@ background-position: 95% 5%
 
 .large[
 -	Shortly about R
-  -	R is a programming language &amp;#10145;&amp;#65039; besides of data analyses, you can do much more with it (e.g. these lecture slides were done using R, my personal [website](https://eemilmitikka.netlify.app/) is created with R)
+  -	R is a programming language &#10145;&#65039; besides of data analyses, you can do much more with it (e.g. these lecture slides were done using R, my personal [website](https://eemilmitikka.netlify.app/) is created with R)
   
   -	If you plan to use even a bit more data visualizations or analyses than what was asked for today’s lecture, .blue[I highly recommend learning the basics of R!]
 ]
@@ -853,7 +848,7 @@ background-position: 95% 5%
 
 ## Softwares: R (and RStudio)
 
-#### Plusses &amp;#10133;
+#### Plusses &#10133;
 -	Inclusiveness: a .blue[free software], wide and friendly user community offers support with problems (Google is your best friend as an R user)
 -	RStudio offers a nice user interface
 -	Data handling is .blue[fully re-usable and reproducible]: anyone with the same dataset and your code can repeat your analysis and get the same results
@@ -863,27 +858,27 @@ background-position: 95% 5%
 -	Can be used to analyze both numerical and textual data
 -	.blue[Knowing R takes you further], unlike knowing exclusive softwares like Excel or SPSS
 
-#### Minuses  &amp;#10134;
+#### Minuses  &#10134;
 -	Importing and handling data in R environment may feel challenging in the beginning, if you're used to softwares like Excel or SPSS
 
 
 ---
 
-# Some things to remember &amp;#9997;
+# Some things to remember &#9997;
 
-.emphasize[&amp;#10004; If possible, .blue[compare] your data of interest with other similar data &amp;#10145;&amp;#65039; do they paint a similar picture of the phenomenon?
+.emphasize[&#10004; If possible, .blue[compare] your data of interest with other similar data &#10145;&#65039; do they paint a similar picture of the phenomenon?
 
-&amp;#10004; Check the .blue[documentation of the data]; how it was produced? &amp;#10145;&amp;#65039;  This is especially relevant with surveys
+&#10004; Check the .blue[documentation of the data]; how it was produced? &#10145;&#65039;  This is especially relevant with surveys
 
 
-&amp;#10004; With surveys: pay attention to .blue[response rates], .blue[question formulations] and .blue[societal context].
+&#10004; With surveys: pay attention to .blue[response rates], .blue[question formulations] and .blue[societal context].
 ]
 
-&lt;style&gt;
+<style>
 .emphasize {
 font-size: 1.5em;
 }
-&lt;/style&gt;
+</style>
 
 ---
 
@@ -891,24 +886,43 @@ font-size: 1.5em;
 # (cont.)
 
 .emphasize[
-&amp;#10004; Don't trust or be skeptical with stand-alone numbers
-  -	Was the same figure smaller or bigger before &amp;#10145;&amp;#65039; what is the overall trend?
-  -	How this compares to other contexts &amp;#10145;&amp;#65039; is this figure higher on average, for example, in other countries?
+&#10004; Don't trust or be skeptical with stand-alone numbers
+  -	Was the same figure smaller or bigger before &#10145;&#65039; what is the overall trend?
+  -	How this compares to other contexts &#10145;&#65039; is this figure higher on average, for example, in other countries?
 
 
-&amp;#10004; There is no such thing as .blue[perfect data]! &amp;#10145;&amp;#65039; both quantitative and qualitative data have their pros and cons &amp;#10145;&amp;#65039; awareness helps to avoid worst pitfalls and jumping to conclusions
+&#10004; There is no such thing as .blue[perfect data]! &#10145;&#65039; both quantitative and qualitative data have their pros and cons &#10145;&#65039; awareness helps to avoid worst pitfalls and jumping to conclusions
 ]
 
 
 ---
 
-# Further reading &amp;#128218;
+# Further reading &#128218;
 
+#### On Russian surveys and their reliability:
 
+Frye, Timothy, Scott Gehlbach, Kyle L. Marquardt, and Ora John Reuter. 2017. “Is Putin’s Popularity Real?” Post-Soviet Affairs 33(1): 1–15. https://doi.org/10.1080/1060586X.2016.1144334.
 
+Medvedev, Sergej. 2019. “Fantom obŝestvennogo mneniâ  Sociologi Denis Volkov i Grigorij Ûdin o tom, otražaût li oprosy nastroeniâ lûdej [Phantom of public opinion - Sociologists Denis Volkov and Grigory 
+Yudin on whether polls reflect people’s moods].” Radio Svoboda. https://www.svoboda.org/a/30058182.html.
 
+Mitikka, Eemil. 2020. “Should We Trust Russian Surveys?” Baltic Rim Economies BRE1/2020 (Expert article 2668). https://sites.utu.fi/bre/should-we-trust-russian-surveys/.
 
+Napreenko, Gleb. 2017. ““Scratch a Russian Liberal and You’ll Find an Educated Conservative”: An Interview with Sociologist Greg Yudin.” https://lefteast.org/scratch-a-russian-liberal-and-youll-find-an-educated-conservative-an-interview-with-sociologist-greg-yudin/.
 
+---
+
+# Further reading &#128218; (cont.)
+
+#### On Rosstat:
+
+Begtin, Ivan. 2011. “Dajte gorožanam dostup k informacii, a dal'še oni vse sdelaût sami [Give citizens access to information, and then they will do everything themselves].” https://m.polit.ru/article/2011/10/18/mocsow_begtin/.
+
+Herrera, Yoshiko. 2006. “The Transformation of Goskomstat in the 1990s.” In *The State after Communism*. eds. Timothy J. Colton and Stephen Holmes, Rowman & Littlefield, 53–86.
+
+#### On importance of quantitative data in general:
+
+Rosling, Hans, Anna Rosling Rönnlund, and Ola Rosling. 2020. Factfulness: Ten Reasons We’re Wrong about the World  and Why Things Are Better Than You Think. Reprint edition. New York City: Flatiron Books.
 
 
 ---
@@ -916,17 +930,17 @@ font-size: 1.5em;
 
 class: center
 
-# Thank you &amp; good luck!
+# Thank you & good luck!
 
 .huge[
-&amp;#128202; + &amp;#128200; = &amp;#128526;
+&#128202; + &#128200; = &#128526;
 ]
 
-&lt;style&gt;
+<style>
 .huge {
 font-size: 7em;
 }
-&lt;/style&gt;
+</style>
 	
 ---
 
@@ -937,24 +951,24 @@ class: inverse
 ### Some thoughts and resources for learning data analysis with:
 ]
 
-&lt;br&gt;
-&lt;br&gt;
+<br>
+<br>
 
 .pull-left[
-&lt;img src="https://www.r-project.org/logo/Rlogo.png" width="50%" /&gt;
+<img src="https://www.r-project.org/logo/Rlogo.png" width="50%" />
 ]
 
 .pull-right[
-&lt;img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/RStudio_logo_flat.svg" width="100%" /&gt;
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/RStudio_logo_flat.svg" width="100%" />
 ]
 
-&lt;style&gt;
+<style>
 .inverse {
   background-color: #34cdeb;
   color: #d6d6d6;
   text-shadow: 0 0 20px #333;
 }
-&lt;/style&gt;
+</style>
 
 ---
 
@@ -965,19 +979,19 @@ background-position: 80% 5%
 
 # Personal thoughts on learning
 
-* Work with .blue[real] and .blue[interesting data] &amp;#10145;&amp;#65039; if you're interested in social and political questions, .blue[use data] on .blue[social] and .blue[political questions]! &amp;#128521;
+* Work with .blue[real] and .blue[interesting data] &#10145;&#65039; if you're interested in social and political questions, .blue[use data] on .blue[social] and .blue[political questions]! &#128521;
 
-* Start with .blue[graphics]: &amp;#128202; &amp;#127912;
+* Start with .blue[graphics]: &#128202; &#127912;
   - Try to .blue[reproduce] and .blue[imitate] some nice looking .blue[graph] you like (and see if you can make it even better!)
   - Create .blue[appealing] and .blue[informative visualizations] that you might .blue[apply] in your thesis/future work
   - Remember to .blue[play around]!
 
-- &lt;u&gt;In the early-stage of learning&lt;/u&gt;, .blue[don't worry too much] about stuff like
+- <u>In the early-stage of learning</u>, .blue[don't worry too much] about stuff like
     - conditionals (e.g. "if-else" -statements), 
     - loops ("for e in x" -sort of things) and
     - user-defined functions
 
-&amp;#10145;&amp;#65039; these can often be replaced with .blue[existing] and more .blue[intuitive] [Tidyverse](https://www.tidyverse.org/) functions + you can learn these kind of stuff in later stages, when you have more experience and confidence on using R!
+&#10145;&#65039; these can often be replaced with .blue[existing] and more .blue[intuitive] [Tidyverse](https://www.tidyverse.org/) functions + you can learn these kind of stuff in later stages, when you have more experience and confidence on using R!
   
 
 ---
@@ -988,20 +1002,20 @@ background-position: 25% 50%, 70% 50%
 
 # First steps with R or recommendations to my past self:
 
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 .pull-left[
 .large[### #1. Learn the basics of the .blue[Tidyverse] first
@@ -1028,9 +1042,9 @@ background-position: 98% 2%
 * David Robinson: [Introduction to the Tidyverse](https://app.datacamp.com/learn/courses/introduction-to-the-tidyverse) (my personal favorite Tidyverse intro course)
   - My personal views on learning R are very similar to Robinson's views
 
-* Alison Hill: [Working with Data in the Tidyverse](https://app.datacamp.com/learn/courses/working-with-data-in-the-tidyverse) (personally don't like the data used in this course, but the contents are &amp;#128079;) &amp;#10145;&amp;#65039; check out also [Hill's YouTube](https://www.youtube.com/channel/UCQYM-t2ut2zXr4d7TIFya1A) channel
+* Alison Hill: [Working with Data in the Tidyverse](https://app.datacamp.com/learn/courses/working-with-data-in-the-tidyverse) (personally don't like the data used in this course, but the contents are &#128079;) &#10145;&#65039; check out also [Hill's YouTube](https://www.youtube.com/channel/UCQYM-t2ut2zXr4d7TIFya1A) channel
 
-* The above-mentioned are DataCamp courses (NB: I don't get any money from them &amp;#129325;), and behind the paywall &amp;#128533; see e.g. YouTube for free Tidyverse courses!
+* The above-mentioned are DataCamp courses (NB: I don't get any money from them &#129325;), and behind the paywall &#128533; see e.g. YouTube for free Tidyverse courses!
 ]
 
 ---
@@ -1079,105 +1093,3 @@ background-position: 80% 5%, 95% 5%
 
 
 
-    </textarea>
-<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
-<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script>var slideshow = remark.create();
-if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
-  window.dispatchEvent(new Event('resize'));
-});
-(function(d) {
-  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
-  if (!r) return;
-  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
-  d.head.appendChild(s);
-})(document);
-
-(function(d) {
-  var el = d.getElementsByClassName("remark-slides-area");
-  if (!el) return;
-  var slide, slides = slideshow.getSlides(), els = el[0].children;
-  for (var i = 1; i < slides.length; i++) {
-    slide = slides[i];
-    if (slide.properties.continued === "true" || slide.properties.count === "false") {
-      els[i - 1].className += ' has-continuation';
-    }
-  }
-  var s = d.createElement("style");
-  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
-  d.head.appendChild(s);
-})(document);
-// delete the temporary CSS (for displaying all slides initially) when the user
-// starts to view slides
-(function() {
-  var deleted = false;
-  slideshow.on('beforeShowSlide', function(slide) {
-    if (deleted) return;
-    var sheets = document.styleSheets, node;
-    for (var i = 0; i < sheets.length; i++) {
-      node = sheets[i].ownerNode;
-      if (node.dataset["target"] !== "print-only") continue;
-      node.parentNode.removeChild(node);
-    }
-    deleted = true;
-  });
-})();
-(function() {
-  "use strict"
-  // Replace <script> tags in slides area to make them executable
-  var scripts = document.querySelectorAll(
-    '.remark-slides-area .remark-slide-container script'
-  );
-  if (!scripts.length) return;
-  for (var i = 0; i < scripts.length; i++) {
-    var s = document.createElement('script');
-    var code = document.createTextNode(scripts[i].textContent);
-    s.appendChild(code);
-    var scriptAttrs = scripts[i].attributes;
-    for (var j = 0; j < scriptAttrs.length; j++) {
-      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
-    }
-    scripts[i].parentElement.replaceChild(s, scripts[i]);
-  }
-})();
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();</script>
-
-<script>
-slideshow._releaseMath = function(el) {
-  var i, text, code, codes = el.getElementsByTagName('code');
-  for (i = 0; i < codes.length;) {
-    code = codes[i];
-    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
-      text = code.textContent;
-      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
-          /^\$\$(.|\s)+\$\$$/.test(text) ||
-          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
-        code.outerHTML = code.innerHTML;  // remove <code></code>
-        continue;
-      }
-    }
-    i++;
-  }
-};
-slideshow._releaseMath(document);
-</script>
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-(function () {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
-  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
-    script.src  = script.src.replace(/^https?:/, '');
-  document.getElementsByTagName('head')[0].appendChild(script);
-})();
-</script>
-  </body>
-</html>

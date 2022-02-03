@@ -45,7 +45,7 @@ background-position: 50% 10%
 .left[
 Faculty of Arts
 <br>
-Last updated on: `r format(Sys.Date(), '%d %B, %Y')`
+Last updated on `r format(Sys.Date(), '%d %B, %Y')`
 ]
 
 
@@ -85,22 +85,6 @@ background-position: 90% 50%
 `r fa("github")` [@eemilmitikka](https://github.com/eemilmitikka)
 
 
-???
-
-Let me say first a couple of words about myself:
-  
-  - My name is Eemil Mitikka
-  
-  - Doctoral Researcher at the University of Helsinki/Aleksanteri Institute
-  
-  - I study political participation and how it relates to authoritarianism in Russia and post-Soviet countries
-  
-  - I have background in social sciences and Russian & Eastern European studies
-  
-  - I also use statistical methods and R in my daily work
-
-Here you can my contact info. Please feel free to contact me through any of these channels. Feel free also to add me as a contact on LinkedIn -- Russia scholars are not a very big group, so it doesn't hurt to have contacts :)
-
 ---
 
 # Warm-up &#128173;
@@ -118,13 +102,6 @@ Here you can my contact info. Please feel free to contact me through any of thes
 
 ## max 2 minutes! &#9200;
 ]
-
-
-???
-
-First, let's have a little warm-up and test your numerical knowledge on Russia. 
-
-There's a little poll in Zoom, please go ahead and answer the questions! :)
 
 
 ---
@@ -146,11 +123,6 @@ There's a little poll in Zoom, please go ahead and answer the questions! :)
 &#10060; Halved (in ~2013) <br>
 &#10060; Doubled
 
-???
-
-Here are the correct answers. You can see how well you did!
-
-Some of the answer alternatives very pulled out of hat, but those within brackets are "correct" numbers but in diffent time, for example.
 
 ---
 
@@ -170,10 +142,6 @@ Some of the answer alternatives very pulled out of hat, but those within bracket
 &#10060; 73% of Russians <br>
 &#9989; 83 % of Russians
 
-
-???
-
-And here are some more answers.
 
 ---
 
@@ -213,11 +181,7 @@ background-position: 95% 50%
 ]
 ]
 
-???
 
-Here's a quote from Hans Rosling, who was a Swedish physician, academic and enthusiastic open data promoter.
-
-I think this quote summarizes quite nicely the meaning and importance of numerical data in modern life.
 
 ---
 
@@ -245,24 +209,6 @@ color: blue;
 font-style: italic;
 }
 </style>
-
-???
-
-Here's briefly to outline of today's lecture. 
-
-We'll talk first briefly about the Russian survey data because 
-
-  - this might be interesting to some of you
-  
-  - there are also some myths and misconceptions related to this kind of data
-  
-  - not very detailed examination of the topic since I believe Margarita Zavadskaya will talk about survey data later on this course
-  
-Next, I'll say couple of words briefly about the state statistics
-
-Then, I'll say couple of words about international statistics related to Russia
-
-Finally, I'll give some examples and ideas how to apply quantitative data to your own future work
 
 
 ---
@@ -302,20 +248,12 @@ font-size: 1.4em;
 }
 </style>
 
-???
-
-Here's very shortly some historical background for surveys. 
-
-The reason why I mention these things here is that since Russia is non-democratic country with no free press, there are often concerns in both academic and everyday discussions about the reliability and usability of Russian survey data. 
-
-So can we relate to Russian surveys in same way as we relate to surveys conducted in democratic countries?
-
 
 ---
 
 # Survey data &#128550; &#128577; &#128528; &#128578; &#128522;
 .large[
-* Reliability concerns in authoritarian countries:
+* Reliability concerns in authoritarian countries (Frye et al. 2017):
   
   1. .blue[Fake numbers]: political legitimacy questions
   
@@ -325,15 +263,6 @@ So can we relate to Russian surveys in same way as we relate to surveys conducte
   
 ]
 
-???
-
-Most typically, the critique of Russian surveys comes in three forms: 
-
-  1. Fake numbers: Russian polling agencies simply present fake numbers to bolster the legitimacy of Putin, the Kremlin and other similar power structures
-  
-  2. Opinion manipulation: this line of critique suggests that since there is no free media in Russia, the Kremlin can mold the opinion climate through media
-  
-  3. Social desirability bias: this means that Russians fear the social consequences for expressing their "true opinions", so they simply lie or embellish the truth when answering the surveys
 
 ---
 
@@ -348,9 +277,6 @@ Most typically, the critique of Russian surveys comes in three forms:
 ![](../images/judah.png)
 ]
 
-???
-
-I've worked quite a lot with Russian surveys, and I think this quote from Ben Judah depicts quite accurately the most common critique of Russian surveys.
 
 ---
 
@@ -383,12 +309,6 @@ I've worked quite a lot with Russian surveys, and I think this quote from Ben Ju
 
 * and others...
 ]
-
-???
-
-Here are some survey organizations and programmes that operate in Russia. Quite many of you had used the Levada-Center's data in assignments, and this organization is indeed probably the most reputable Russian polling agency. However, when looking for data sources, I'd recommend you to check also the data from state-aligned polling agencies (e.g. VCIOM and FOM): sometimes their surveys contain interesting questions and figures that can tell you something about the Russian society. It's also a good practice to compare the data from different survey organizations on with similar questions to see if they paint a similar picture of the phenomenon -- but we'll get back to this soon.
-
-Many established and high quality survey programmes operate also in Russia, and you may find interesting data from those too. Full datasets are often available only in csv or SPSS/similar statistical programme formats, but quite often you can also subset a smaller dataset of variables in Excel format from their webpages (at least World Values Survey and European Social Survey have these kind of online tools available on their webpages).
 
 
 
@@ -493,6 +413,7 @@ background-position: 95% 5%
 
 
 ]
+
 ---
 
 ## Some survey data sources on &#127479;&#127482;
@@ -899,12 +820,44 @@ font-size: 1.5em;
 
 # Further reading &#128218;
 
+#### On Russian surveys and their reliability:
 
+.smaller[
+Ahmed, Saeed. 2015. “Vladimir Putin’s Approval Rating? Now at a Whopping 86.” https://www.cnn.com/2015/02/26/europe/vladimir-putin-popularity/index.html.
 
+Frye, Timothy, Scott Gehlbach, Kyle L. Marquardt, and Ora John Reuter. 2017. “Is Putin’s Popularity Real?” Post-Soviet Affairs 33(1): 1–15. https://doi.org/10.1080/1060586X.2016.1144334.
 
+Medvedev, Sergej. 2019. “Fantom obŝestvennogo mneniâ  Sociologi Denis Volkov i Grigorij Ûdin o tom, otražaût li oprosy nastroeniâ lûdej [Phantom of public opinion - Sociologists Denis Volkov and Grigory 
+Yudin on whether polls reflect people’s moods].” Radio Svoboda. https://www.svoboda.org/a/30058182.html.
 
+Mitikka, Eemil. 2020. “Should We Trust Russian Surveys?” Baltic Rim Economies BRE1/2020 (Expert article 2668). https://sites.utu.fi/bre/should-we-trust-russian-surveys/.
 
+Napreenko, Gleb. 2017. ““Scratch a Russian Liberal and You’ll Find an Educated Conservative”: An Interview with Sociologist Greg Yudin.” https://lefteast.org/scratch-a-russian-liberal-and-youll-find-an-educated-conservative-an-interview-with-sociologist-greg-yudin/.
+]
 
+<style>
+.smaller {
+font-size: .9em;
+}
+</style>
+
+---
+
+# Further reading &#128218; (cont.)
+
+#### On Rosstat:
+
+.smaller[
+Begtin, Ivan. 2011. “Dajte gorožanam dostup k informacii, a dal'še oni vse sdelaût sami [Give citizens access to information, and then they will do everything themselves].” https://m.polit.ru/article/2011/10/18/mocsow_begtin/.
+
+Herrera, Yoshiko. 2006. “The Transformation of Goskomstat in the 1990s.” In *The State after Communism*. eds. Timothy J. Colton and Stephen Holmes, Rowman & Littlefield, 53–86.
+]
+
+#### On importance of quantitative data in general:
+
+.smaller[
+Rosling, Hans, Anna Rosling Rönnlund, and Ola Rosling. 2020. Factfulness: Ten Reasons We’re Wrong about the World  and Why Things Are Better Than You Think. Reprint edition. New York City: Flatiron Books.
+]
 
 ---
 
