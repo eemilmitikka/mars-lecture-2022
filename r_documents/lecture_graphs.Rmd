@@ -141,11 +141,102 @@ ggplot(ratings_merged, aes(x = date)) +
   geom_vline(xintercept = as.POSIXct(as.Date("2011-12-12")), linetype = 4) +
   geom_vline(xintercept = as.POSIXct(as.Date("2014-03-01")), linetype = 4) +
   geom_vline(xintercept = as.POSIXct(as.Date("2018-07-14")), linetype = 4) +
+  geom_vline(xintercept = as.POSIXct(as.Date("2005-01-01")), linetype = 4) +
+  geom_vline(xintercept = as.POSIXct(as.Date("1999-09-21")), linetype = 4) +
   annotate("text", x = as.POSIXct(as.Date("2009-4-27")), y = 0.4, label = "Oil\nprices\npeak", size = 5) +
-  annotate("text", x = as.POSIXct(as.Date("2012-12-30")), y = 0.4, label = "2011\nelections", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2012-12-30")), y = 0.4, label = "2011\nelection\nprotests", size = 5) +
   annotate("text", x = as.POSIXct(as.Date("2015-07-30")), y = 0.4, label = "Annexation\nof Crimea", size = 5) +
-  annotate("text", x = as.POSIXct(as.Date("2019-07-30")), y = 0.4, label = "Pension\nreform", size = 5) + theme(axis.text = element_text(size = 18),
-    plot.title = element_text(size = 19)) + theme(axis.title = element_text(size = 15))
+  annotate("text", x = as.POSIXct(as.Date("2019-08-30")), y = 0.4, label = "Pension\nreform", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2006-07-01")), y = 0.4, label = "Orange\nRevolution\nresonates\nin Russia?", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2001-01-01")), y = 0.4, label = "Second\nChechen\nWar\nbegins", size = 5) +
+  theme(axis.text = element_text(size = 18), plot.title = element_text(size = 19)) + 
+  theme(axis.title = element_text(size = 15))
+
+# Save the plot
+approval_plot <- ggplot(ratings_merged, aes(x = date)) +
+  geom_line(data = ratings_merged[!is.na(ratings_merged$levada_prop),], aes(y = levada_prop, color = "Levada-Center")) +
+  geom_line(data = ratings_merged[!is.na(ratings_merged$vciom_prop),], aes(y = vciom_prop, color = "VCIOM")) +
+  ggplot2::labs(x = "Year",
+       title = "Approve Vladimir Putin's actions as a president/prime minister of Russia ('Yes'-%)",
+       y = NULL) + 
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
+  theme(panel.background = element_rect(fill = "gray96")) +
+  scale_color_manual(name = "Data source",
+                     values = c("Levada-Center" = "#033365", "VCIOM" = "#fc0313")) +
+  geom_vline(xintercept = as.POSIXct(as.Date("2008-07-04")), linetype = 4) +
+  geom_vline(xintercept = as.POSIXct(as.Date("2011-12-12")), linetype = 4) +
+  geom_vline(xintercept = as.POSIXct(as.Date("2014-03-01")), linetype = 4) +
+  geom_vline(xintercept = as.POSIXct(as.Date("2018-07-14")), linetype = 4) +
+  geom_vline(xintercept = as.POSIXct(as.Date("2005-01-01")), linetype = 4) +
+  geom_vline(xintercept = as.POSIXct(as.Date("1999-09-21")), linetype = 4) +
+  annotate("text", x = as.POSIXct(as.Date("2009-4-27")), y = 0.4, label = "Oil\nprices\npeak", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2012-12-30")), y = 0.4, label = "2011\nelection\nprotests", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2015-07-30")), y = 0.4, label = "Annexation\nof Crimea", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2019-08-30")), y = 0.4, label = "Pension\nreform", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2006-07-01")), y = 0.4, label = "Orange\nRevolution\nresonates\nin Russia?", size = 5) +
+  annotate("text", x = as.POSIXct(as.Date("2001-01-01")), y = 0.4, label = "Second\nChechen\nWar\nbegins", size = 5) +
+  theme(axis.text = element_text(size = 18), plot.title = element_text(size = 19)) + 
+  theme(axis.title = element_text(size = 15))
+
+# Define arrows for the approval plot
+arrows <- data.frame(x1_start = as.POSIXct(as.Date("2001-01-01")), 
+                  x1_end = as.POSIXct(as.Date("1999-09-21")),
+                  x2_start = as.POSIXct(as.Date("2006-07-01")),
+                  x2_end = as.POSIXct(as.Date("2005-01-01")),
+                  x3_start = as.POSIXct(as.Date("2009-04-27")),
+                  x3_end = as.POSIXct(as.Date("2008-07-04")),
+                  x4_start = as.POSIXct(as.Date("2012-12-30")),
+                  x4_end = as.POSIXct(as.Date("2011-12-12")),
+                  x5_start = as.POSIXct(as.Date("2015-07-30")),
+                  x5_end = as.POSIXct(as.Date("2014-03-01")),
+                  x6_start = as.POSIXct(as.Date("2019-08-30")),
+                  x6_end = as.POSIXct(as.Date("2018-07-14")),
+                  y_start = 0.46, y_end = 0.5,
+                  y2_start = 0.44,
+                  y3_start = 0.43)
+
+# Visualize the final approval plot
+approval_plot <- approval_plot + 
+  # Chechen War
+  geom_curve(
+    aes(x = x1_start, y = y_start, xend = x1_end, yend = y_end),
+    data = arrows,
+    arrow = arrow(length = unit(0.03, "npc"))
+) + 
+  # Orange Revolution
+  geom_curve(
+    aes(x = x2_start, y = y_start, xend = x2_end, yend = y_end),
+    data = arrows,
+    arrow = arrow(length = unit(0.03, "npc"))
+) +
+  # Oil price peak
+  geom_curve(
+    aes(x = x3_start, y = y2_start, xend = x3_end, yend = y_end),
+    data = arrows,
+    arrow = arrow(length = unit(0.03, "npc"))
+) +
+  # 2011 protests
+  geom_curve(
+    aes(x = x4_start, y = y2_start, xend = x4_end, yend = y_end),
+    data = arrows,
+    arrow = arrow(length = unit(0.03, "npc"))
+) +
+  # Crimea
+  geom_curve(
+    aes(x = x5_start, y = y3_start, xend = x5_end, yend = y_end),
+    data = arrows,
+    arrow = arrow(length = unit(0.03, "npc"))
+) +
+  # Pension reform
+  geom_curve(
+    aes(x = x6_start, y = y3_start, xend = x6_end, yend = y_end),
+    data = arrows,
+    arrow = arrow(length = unit(0.03, "npc"))
+)
+
+approval_plot + 
+  theme(plot.caption = element_text(size = 13, hjust = 0)) +
+  labs(caption = "Figure by: Eemil Mitikka")
 
 ```
 
