@@ -475,7 +475,11 @@ Brainstorm &#128173; in groups for 5 minutes &#9200;
 ]
 
 .pull-right[
-.big[&#129488;]
+.center[
+.huge[
+&#129488;
+]
+]
 ]
 
 <style>
@@ -485,7 +489,7 @@ font-size: 1.5em;
 </style>
 ---
 
-background-image: url(../images/approval_ratings_interpret.png)
+background-image: url(../images/approval_plot.png)
 background-size: contain
 
 ---
